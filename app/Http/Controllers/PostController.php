@@ -15,9 +15,14 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-    	post::create($request->all());
+    	$attr = request()->validate([
+            'title' => 'required',
+            'body'  => 'required',
+            ]);
 
-   		return redirect('/post');
+        $attr['slug'] = \Str::slug(request('title'));
+        Post::create($attr);
+        return redirect('/post');
     }
 
     public function create()
@@ -33,7 +38,7 @@ class PostController extends Controller
 
     public function update(Request $request,Post $post, $id)    
     {
-        $posts = Post::find($post);
+        $posts = Post::find($id);
         $posts->update($request->all());
         return redirect('/post');
     }

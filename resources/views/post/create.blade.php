@@ -1,67 +1,62 @@
 @extends('layouts.app')
-
+@section('title', 'Create Postingan')
 @section('content')
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<meta charset="utf-8">
-	<meta http-equiv="X-AU-Compatible" content="IE=edge">
-	<link rel="stylesheet" type="text/css" href="">
-</head>
-<body>
-	<center>
-		<h1>Buat Postingan</h1>
-		<form action="/post/store" method="post">
-		@csrf
-		<table>
-				<tr>
-					<td>
-						<label for="title">Title</label>
-					</td>
-					<td>
-						<div>
-							<input type="text" name="title" id="title" required="">
-						</div>
-					</td>
-				</tr>
 
-				<tr>
-					<td>
-						<label for="slug">Slug</label>
-					</td>
-					<td>
-						<div>
-							<input type="text" name="slug" id="slug" required="">
-						</div>
-					</td>
-				</tr>
 
-				<tr>
-					<td>
-						<label for="body">Body</label>
-					</td>
-					<td>
-						<div>
-							<textarea name="body" id="body" cols="50" rows="5">
-							</textarea>
-						</div>
-					</td>
-				</tr>
 
-				<tr>
-					<td>
-						<button type="submit">SIMPAN</button>
-					</td>
-				</tr>
-		</table>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header"><h2>Create Postingan</h2></div>
+				<div class="card-body">
+					<form action="/post/store" method="post">
+						@csrf
+						<div class="form-grup">
+							<label for="title">Title</label>
+							<input type="text" name="title" id='title' class="form-control">
+							@error('title')
+							<div class="text-danger mt-2">
+								{{ $message }}
+							</div>
+							@enderror
+						</div>
+						<div class="form-grup">
+							<label for="body">Body</label>
+							<textarea type="text" name="body" id='body' class="form-control"></textarea>
+							@error('body')
+							<div class="text-danger mt-2">
+								{{ $message }}
+							</div>
+							@enderror
+						</div>
+
+						<br><button class="btn btn-primary" type="submit">Posting</button>
+					</form>
+					
+				</div>
+				
+			</div>
 			
-		</form>
-	</center>
-</body>
-</html>
+		</div>
+		
+	</div>
+	
+</div>
 
 
 
 
-@stop
+
+
+
+
+
+
+
+
+
+
+
+
+@endsection
