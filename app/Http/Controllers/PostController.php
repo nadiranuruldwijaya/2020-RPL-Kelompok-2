@@ -9,11 +9,12 @@ class PostController extends Controller
 {
     public function index()
     {
-    	$posts = Post::latest()->paginate('4');
+    	$posts = Post::latest()->paginate('3');
     	return view ('post.index', compact('posts'));
+        
     }
 
-    public function store(Request $request)
+    public function store()
     {
     	$attr = request()->validate([
             'title' => 'required',
@@ -22,6 +23,7 @@ class PostController extends Controller
 
         $attr['slug'] = \Str::slug(request('title'));
         Post::create($attr);
+        session()->flash('success', 'The post was created');
         return redirect('/post');
     }
 
@@ -45,8 +47,8 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        $post = Post::find($post);
-        return view('post.show',compact('post'));
+        $post = Post::find($post)->first();
+       return view('post.show',compact('post')); 
     }
 
     public function destroy($id)

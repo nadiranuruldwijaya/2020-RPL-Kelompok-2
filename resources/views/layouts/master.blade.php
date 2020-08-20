@@ -21,13 +21,12 @@
 
 </head>
 <body>
-    <div id="app">
-        @include('layouts.navigation')
-        <main class="py-4">
-            @include('alert')
-            @yield('content')
-        </main>
-    </div>
+    @include('layouts.navigation')
+     <div class="py-4">
+        @include('alert')
+        @yield('content')
+     </div>
+   
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}" defer></script>
