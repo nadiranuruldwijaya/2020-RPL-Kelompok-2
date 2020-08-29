@@ -20,8 +20,8 @@ class PostController extends Controller
 
     public function index()
     {
-    	$posts = Post::with('author', 'tags', 'category')->latest()->paginate('3');
-    	return view ('post.index', compact('posts'));
+        $posts = Post::with('author', 'tags', 'category')->latest()->paginate('3');
+        return view ('post.index', compact('posts'));
         
     }
 
@@ -52,7 +52,7 @@ class PostController extends Controller
 
     public function create()
     {
-    	return view('post.create', [
+        return view('post.create', [
             'post' => new Post(),
             'categories' => Category::get(),
             'tags' => Tag::get(),
