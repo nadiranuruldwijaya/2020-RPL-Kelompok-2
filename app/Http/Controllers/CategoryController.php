@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function show(Category $category)
+    public function show(Category $categories)
     {
-    	$posts = $category->posts()->latest()->paginate(6);
-    	return view('post.index', compact('posts', 'category'));
+    	$posts = $categories->posts()->latest()->paginate(6);
+    	return view('post.categories-show', compact('posts', 'categories'));
     }
 }

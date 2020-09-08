@@ -17,12 +17,13 @@ class Post extends Model
         return "/storage/" . $this->thumbnail;
     }
 
-    public function tags(){
-        return $this->belongsToMany(Tag::class);
-    }
+    public function tags()
+       {
+        return $this->belongsToMany('App\Tag', 'post_tag', 'post_id', 'tag_id');
+       }
 
     public function author()
     {
-        return $this->belongsTo(user::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

@@ -8,9 +8,9 @@ use App\Tag;
 
 class TagController extends Controller
 {
-    public function show(Tag $tag)
+    public function show(Tag $tags)
     {
-    	$posts = $tag->posts()->latest()->paginate(6);
-    	return view('post.index', compact('posts', 'tag'));
+    	$posts = $tags->posts()->latest()->paginate(6);
+    	return view('post.tags-show', compact('posts', 'tags'));
     }
 }
