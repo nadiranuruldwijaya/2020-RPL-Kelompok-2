@@ -5,9 +5,9 @@
       <div class="row">
         <div class="col-md-8">
           @if($post->thumbnail)
-          @auth
+          @if(Auth()->user())
           <img style="height: 800px; object-fit: cover; object-position: center;" class="card-img" src="{{ URL::to('')}}{{ $post->takeImage }}">
-            @endauth
+            @endif
           @endif
           <h1>{{ $post->title }}</h1>
           <div class="text-secondary">

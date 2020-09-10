@@ -64,14 +64,5 @@ Route::group(['middleware'=>'DisablePreventBack'], function()
 
 
 
-//NEW
 
-Route::get('/siswa','SiswaController@index')->name('siswa.index'); 
-
-Route::get('/siswa/create','SiswaController@create')->name('siswa.create'); 
-Route::post('/siswa/store','SiswaController@store')->name('siswa.store');  
-Route::get('/siswa/{siswa}/edit','SiswaController@edit')->name('siswa.edit');
-
-Route::post('/siswa/{siswa}/update','SiswaController@update')->name('siswa.update'); 
-Route::get('/siswa/{siswa}/destroy','SiswaController@destroy')->name('siswa.destroy');
 
